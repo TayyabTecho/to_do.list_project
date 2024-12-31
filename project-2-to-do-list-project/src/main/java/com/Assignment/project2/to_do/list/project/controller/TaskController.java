@@ -1,6 +1,7 @@
 package com.Assignment.project2.to_do.list.project.controller;
 
 import com.Assignment.project2.to_do.list.project.model.Task;
+import com.Assignment.project2.to_do.list.project.request.TaskRequest;
 import com.Assignment.project2.to_do.list.project.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class TaskController {
         taskService.createTask(task);
     }
 
-    @GetMapping("/getTaskById/taskId}")
+    @GetMapping("/getTaskById/{taskId}")
     public Task getTaskById(@PathVariable Long taskId){
     return  taskService.getById(taskId);
     }
@@ -30,8 +31,8 @@ public class TaskController {
     }
 
     @PutMapping("/updateTask/{taskId}")
-    public void updateTask(@PathVariable Long taskId, @RequestBody Task task){
-    taskService.updateTask(taskId,task);
+    public void updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest){
+    taskService.updateTask(taskId,taskRequest);
     }
 
     @DeleteMapping("/deleteTask/{taskId}")
